@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let [milliseconds, second] = [0, 0]
+    let [hour, minute, second, milliseconds] = [99, 50, 59, 99]
     let timer = document.querySelector('.timer');
     let int = null;
 
@@ -16,20 +16,31 @@ $(document).ready(function () {
 
     $('.reset-btn').click(function () {
         clearInterval(int);
-        [milliseconds, second] = [0, 0];
-        timer.innerHTML = '00 : 00';
+        [hour, minute, second, milliseconds] = [0, 0, 0, 0];
+        timer.innerHTML = '00 : 00 : 00 : 00';
     });
 
     function getTime() {
         milliseconds += 10;
-        if (milliseconds == 1000) {
+        if (milliseconds >= 1000) {
             milliseconds = 0;
             second++;
         }
+        if (second == 60) {
+            second = 0;
+            minute++
+        }
+        if (minute == 60) {
+            minute = 0;
+            hour++
+        }
 
+
+        let h = hour < 10 ? "0" + hour : hour;
+        let m = minute < 10 ? "0" + minute : minute;
         let s = second < 10 ? "0" + second : second;
         let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
 
-        timer.innerHTML = `${s} : ${ms}`;
+        timer.innerHTML = `${h} : ${m} :${s} : ${ms}`;
     }
 })
