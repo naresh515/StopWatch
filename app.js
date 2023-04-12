@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let [hour, minute, second, milliseconds] = [99, 50, 59, 99]
+    let [hour, minute, second, milliseconds] = [0, 0, 0, 0]
     let timer = document.querySelector('.timer');
     let int = null;
 
