@@ -58,8 +58,8 @@ body {
     border-radius: 12px;
 }
 
-.btn:hover,
-.btn:focus {
+/* New Way to add pshedo classes  */
+.btn:is(:hover, :focus) {
     background-color: white;
     color: rgb(252 134 16);
 }
